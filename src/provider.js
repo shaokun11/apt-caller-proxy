@@ -49,10 +49,13 @@ function parseRet(res) {
 	return ret;
 }
 
-exports.call = function call(url) {
+exports.call = function (url) {
 	return fetch(url)
 		.then(response => response.json())
-		.then(parseRet);
+		.then(res=>{
+            console.log('---request----res-----', url,res);
+            return parseRet(res);
+        });
 };
 
 exports.post = async function (url, body, parse = true) {
