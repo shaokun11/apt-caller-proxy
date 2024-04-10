@@ -1,7 +1,7 @@
 // import Core from "@cosmos-client/core";
 const Core = require("@cosmos-client/core");
 const cosmosclient = Core.default;
-
+const readline = require('readline');
 const sdk = new cosmosclient.CosmosSDK("http://localhost:1317", "aptcaller");
 
 async function x() {
@@ -37,6 +37,39 @@ async function x() {
 // curl -X POST -k http://localhost:8091/v1/control/start -d '{"execPath":"/home/ubuntu/avalanchego-v1.11.1/avalanchego","numNodes":1,"logLevel":"INFO","pluginDir":"/home/ubuntu/config/plugins","blockchainSpecs":[{"vm_name":"m1","genesis":"/home/ubuntu/config/genesis.json"}]}'
 
 // curl -X POST -k http://localhost:8081/v1/control/start -d '{"execPath":"/home/ubuntu/avalanchego-v1.11.1/avalanchego","numNodes":1,"logLevel":"INFO","pluginDir":"/home/ubuntu/config/plugins","blockchainSpecs":[{"vm_name":"m1","genesis":"/home/ubuntu/config/genesis.json"}]}'
+const fs = require("fs")
+
+let txt = `
+code: 0
+codespace: ""
+data: ""
+events: []
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: ""
+timestamp: ""
+tx: null
+txhash: 9BDC0D72A3DAB6B79577ABA5A1C00D72C7020C6019303E88E1C0BD4431FD28EA
+code: 0
+codespace: ""
+data: ""
+events: []
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: ""
+timestamp: ""
+tx: null
+txhash: 9BDC0D72A3DAB6B79577ABA5A1C00D72C7020C6019303E88E1C0BD4431FD28EA
+
+`
+const line =  txt.split('\n').find(it=>it.includes("txhash"));
+console.log(line)
 
 
-console.log(Buffer.from("6c7efc6b3b0f2a3240736b0efaf514c7aa3c3de79c5e9b82dc72c8fe93b15ec200000000000000000200000000000000000000000000000000000000000000000000000000000000010d6170746f735f6163636f756e740e7472616e736665725f636f696e73010700000000000000000000000000000000000000000000000000000000000000010a6170746f735f636f696e094170746f73436f696e0002203721b408f83b272e144bb4a4c13ac44a4de6dbb18c63b19a9d9087eedfd823d108a0860100000000000e000000000000009600000000000000a20e166600000000020020946f16230623155c6d9e7d347d34faa64e24921e7db205f6183cf8c37a098dae40e31732f1f0308c9bf76a67a59a8f4f3032425b5e1fc13190c5f2fb8a8c7b02c9cc5e4aabb8087ecddadf2b7b8109815b44108adefdd36f553eca9d232aa1d102"), "hex")
+fetch("http://127.0.0.1:1317/cosmos/tx/v1beta1/txs/3951C8C70EF10617B5203892DEAF1DDF7F01546B0205D8A09D9E7BF74587F7AA").then(res=>res.json()).then(console.log)  
