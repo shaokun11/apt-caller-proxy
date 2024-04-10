@@ -342,9 +342,15 @@ router.get('/-/healthy', async (req, res) => {
 });
 
 router.post('/graphql', async (req, res) => {
-	const url = URL + `aptos_indexer/${Buffer.from(JSON.stringify(req.body)).toString('hex')}`;
-	const result = await call(url);
-	res.json(JSON.parse(result.data));
+	const url = URL + `aptos_indexer`;
+	const result = await post(
+		url,
+		{
+			body: JSON.stringify(req.body),
+		},
+		false,
+	);
+	res.json(JSON.parse(result.aptRes.body));
 });
 
 const bcs_formatter = (req, res, next) => {

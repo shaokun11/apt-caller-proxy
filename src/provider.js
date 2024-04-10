@@ -55,16 +55,18 @@ exports.call = function call(url) {
 		.then(parseRet);
 };
 
-exports.post = function (url, body) {
-	return fetch(url, {
+exports.post = async function (url, body, parse = true) {
+	let res = await fetch(url, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(body),
-	})
-		.then(response => response.json())
-		.then(parseRet);
+	}).then(response => response.json());
+	if (parse) {
+		return parseRet(res);
+	}
+	return res;
 };
 
 async function getResponse(url, max = 10) {
