@@ -369,7 +369,7 @@ const bcs_formatter = (req, res, next) => {
 			send_format = APTOS_MIME_TYPE.BCS_SIGNED_TRANSACTION;
 		}
 	}
-	req.req_header = Buffer.from(`${send_format}&${rev_format}`).toString('hex');
+	req.req_header = `${send_format}&${rev_format}`;
 	res.sendData = data => {
 		setHeader(data.header, res);
 		if (data.error) {
