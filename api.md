@@ -14,10 +14,9 @@ curl http://127.0.0.1:1317/aptcaller/aptcaller/get_ledger_info
 curl http://127.0.0.1:1317/aptcaller/aptcaller/get_transaction_by_hash/0x343f74105eea2d44866c6dc2da4da4b77b5afeac082bdb9023c4a612e0e6cd0d
 
 curl http://127.0.0.1:1317/aptcaller/aptcaller/estimate_gas_price
-aptcallerd query tx --type=hash AD2FCD79D942409166BDA0D48D48489AD8C8FFD029565622AE32BB8F522FE54E
+aptcallerd query tx --type=hash 55F3F771EDB0A5A24663D6ADFB9DA8CB18753362DC05FD15C252AA8381825916
 curl http://127.0.0.1:1317/cosmos/tx/v1beta1/txs/CDE408A12F6E06116316A8F85E81BA9D46DE3AA682BD415637A8F1E250DBFA71
 
-"txhash: CDE408A12F6E06116316A8F85E81BA9D46DE3AA682BD415637A8F1E250DBFA71"
 
 ignite scaffold query get-account-resources address ledgerVersion limit start --response AptRes:AptRes
 ignite scaffold query get-account-modules address ledgerVersion limit start --response AptRes:AptRes

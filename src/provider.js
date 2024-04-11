@@ -29,7 +29,6 @@ function parseRustString(rustString) {
 
 function parseRet(res) {
 	const result = res.aptRes;
-	console.log('---request----res-----', res);
 	let data = result.body;
 	let code = result.code;
 	let error;
